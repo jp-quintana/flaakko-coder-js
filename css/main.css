@@ -247,7 +247,7 @@ img {
 
 .footer {
   padding-top: 2rem; }
-  .footer .footer-grid {
+  .footer-grid {
     display: grid;
     padding-bottom: 1rem; }
     .paginas {
@@ -555,7 +555,7 @@ img {
 .modal--boton-primario {
   background-color: #8c52ff;
   border-radius: 0;
-  border: none; }
+  border: 1px solid #8c52ff; }
 
 .modal--boton-primario:hover {
   background-color: #6112FF; }

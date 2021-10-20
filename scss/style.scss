@@ -316,7 +316,7 @@ img {
 
 .footer {
   padding-top: 2rem;
-  .footer-grid {
+  @at-root .footer-grid {
     display: grid;
     padding-bottom: 1rem;
     @at-root .paginas {
@@ -740,7 +740,7 @@ img {
 .modal--boton-primario {
   background-color: $violeta;
   border-radius: 0;
-  border: none;
+  border: 1px solid $violeta;
 }
 .modal--boton-primario:hover {
   background-color: $violetaOscuro;
