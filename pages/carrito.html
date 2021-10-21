@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLAAKKO | Contacto</title>
-    <meta name="description" content="Página de Contacto. Ropa unisex con estilo. Envíos a todos el país.">
-    <meta name="keywords" content="ropa, contacto, remeras, accesorios, buzos, unisex, streetwear">
+    <title>FLAAKKO | Carrito</title>
+    <meta name="description" content="Colección de buzos. Ropa unisex con estilo. Envíos a todos el país.">
+    <meta name="keywords" content="ropa, buzos, hoodie, sweater, unisex, streetwear">
     <link rel="preload" href="../css/normalize.css" as="style">
     <link rel="preload" href="../css/main.css" as="style">
     <link rel="stylesheet" href="../css/bootstrap.css">
@@ -60,47 +60,10 @@
 
     <main class="main">
       <div class="contenedor">
-        <section class="contacto">
-          <div class="contacto__background"></div>
-          <form action="" class="contacto__formulario">
-            <fieldset class="contacto__fieldset">
-              <legend class="contacto__leyenda">Envianos tu consulta</legend>
-
-              <label class="contacto__categoria block" for="categoria-contacto">Por favor elija una categoria:*</label>
-              <select class="contacto__select block" name="categoria-contacto" id="categoria-contacto" required>
-                <option selected disabled></option>
-                <option value="cancelar">Cancelar orden</option>
-                <option value="pago">Tengo una duda acerca del pago</option>
-                <option value="productos">Consulta acerca de producto especifico</option>
-                <option value="devoluciones">Consulta acerca de las devoluciones</option>
-                <option value="envios">Consulta acerca del envio</option>
-              </select>
-              <br>
-
-              <label class="contacto__email block" for="email">Tu email*</label>
-              <input class="contacto__input block" type="email" name="email" id="email" value="" placeholder="tuemail@mail.com" required>
-              <br>
-
-              <label class="contacto__nombre block" for="nombre">Tu nombre*</label>
-              <input class="contacto__input block" type="text" name="nombre" id="nombre" value="" required>
-              <br>
-
-              <label class="contacto__apellido block" for="apellido">Tu apellido*</label>
-              <input class="contacto__input block" type="text" name="apellido" id="apellido" value="" required>
-              <br>
-
-              <label class="contacto__orden block" for="orden">Numero de orden</label>
-              <input class="contacto__input block" type="text" name="orden" id="orden" value="">
-              <br>
-
-              <label class="contacto__mensaje block" for="mensaje">Tu consulta*</label>
-              <textarea class="contacto__textarea block" name="mensaje" id="mensaje" rows="8" cols="auto" required></textarea>
-              <br>
-
-              <input class="contacto__boton block" type="button" name="button" id="button" value="Enviar">
-            </fieldset>
-          </form>
-        </section>
+        <h1>Carrito</h1>
+        <p>Está todo correcto?</p>
+        <button class="contacto__boton" onclick="boton1()">Sí</button>
+        <button class="contacto__boton" onclick="boton2()">No</button>
       </div> <!-- .contenedor -->
     </main>
 
@@ -182,6 +145,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
 
   </body>
 </html>
