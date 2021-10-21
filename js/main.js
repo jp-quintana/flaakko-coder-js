@@ -16,6 +16,8 @@ const remover = indice => {
   carrito.splice(indice, 1)
 }
 
+console.log("Envíos gratis en compras superiores a $6500");
+
 const carrito = [];
 
 // Loop para agregar objetos al array "carrito" ------------------------------
@@ -60,13 +62,14 @@ for (var producto of carrito) {
   precioTotal += producto.precio;
 }
 
+// Evaluación si corresponde envío gratis o no
 if (precioTotal > 6500) {
   precioFinal = precioTotal;
   costoEnvio = 'GRATIS'
-  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total supera los $6500, el envío es ${costoEnvio} haciendo que le precio total sea ${precioFinal}`);
+  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total supera los $6500, el envío es ${costoEnvio} haciendo que le precio total sea $${precioFinal}`);
 } else {
   precioFinal = precioTotal + costoEnvio;
-  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total no supera los $6500, el envío es de ${costoEnvio} haciendo que le precio total sea ${precioFinal}`);
+  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total no supera los $6500, el envío es de $${costoEnvio} haciendo que le precio total sea $${precioFinal}`);
 }
 
 function boton1() {
