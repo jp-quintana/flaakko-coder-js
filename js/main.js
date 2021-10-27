@@ -1,80 +1,64 @@
 class Producto {
-  constructor(tipo, modelo, color, talle, precio) {
-    this.tipo = tipo
-    this.modelo = modelo
-    this.color = color
-    this.talle = talle
-    this.precio = precio
+  constructor(sku, tipo, modelo, color, talle, precio) {
+    this.sku = sku
+    this.tipo = capitalizar(tipo)
+    this.modelo = capitalizar(modelo)
+    this.color = capitalizar(color)
+    this.talle = talle.toUpperCase()
+    this.precio = parseInt(precio)
   }
 }
+
 
 // Funcion para capitalizar la primer letra de un string
-const capitalizar = (palabra) => palabra[0].toUpperCase() + palabra.slice(1);
-
-// Funcion para remover objeto "Producto" según su índice
-const remover = indice => {
-  carrito.splice(indice, 1)
+function capitalizar(palabra) {
+  return palabra[0].toUpperCase() + palabra.slice(1);
 }
 
-console.log("Envíos gratis en compras superiores a $6500");
+// Array carrito
+let carrito = []
 
-const carrito = [];
-
-// Loop para agregar objetos al array "carrito" ------------------------------
-do {
-  var consultaAgregar = prompt("Indique si quiere agregar un producto al carrito o 'Fin' para terminar", "Si o fin").toLowerCase();
-  if (consultaAgregar === "fin") {
-    break;
-  } else {
-    let tipoProducto = capitalizar(prompt("Indique el tipo del producto", "Remera, buzo o gorra"));
-    let modeloProducto = capitalizar(prompt("Indique el modelo del producto", "De gira, Ojos, Baires o Flaakko"));
-    let colorProducto = capitalizar(prompt("Indique el color del producto", "Blanco/a o negro/a"));
-    let talleProducto = prompt("Indique el talle del producto", "S, M, L, XL").toUpperCase();
-    let precioProducto = parseInt(prompt("Indique el precio del producto", "1000-9999"));
-    carrito.push(new Producto(tipoProducto, modeloProducto, colorProducto, talleProducto, precioProducto));
-    alert("El producto se ha agregado al carrito con exito!");
-  }
-} while(consultaAgregar !== "fin");
-
-
-console.log("Los productos en tu carrito son:");
-carrito.forEach((elemento, indice) => console.log(elemento, indice));
-
-// Loop para quitar objetos del array "carrito" usando función "remover" ------------------------------
-do {
-  var consultaRemover = prompt("Si desea remover un producto, indique su índice, sino escriba 'Fin' para terminar").toLowerCase();
-  if (consultaRemover === "fin") {
-    break;
-  } else {
-    remover(consultaRemover);
-    console.log("El producto se ha quitado del carrito con exito! Los productos que quedan son:");
-    carrito.forEach((elemento, indice) => console.log(elemento, indice));
-  }
-} while(consultaRemover !== "fin")
-
-// Calculo Precio ------------------------------
-let precioTotal = 0;
-let costoEnvio = 750;
-let precioFinal = 0;
-
-// Suma todos los precios de los objetos del array "carrito"
-for (var producto of carrito) {
-  precioTotal += producto.precio;
+// Metodo que retorna el contenido del carrito
+const getCarrito = () => {
+    return carrito;
 }
 
-// Evaluación si corresponde envío gratis o no
-if (precioTotal > 6500) {
-  precioFinal = precioTotal;
-  costoEnvio = 'GRATIS'
-  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total supera los $6500, el envío es ${costoEnvio} haciendo que le precio total sea $${precioFinal}`);
-} else {
-  precioFinal = precioTotal + costoEnvio;
-  alert(`El precio total de sus productos es de $${precioTotal}. Como el precio total no supera los $6500, el envío es de $${costoEnvio} haciendo que le precio total sea $${precioFinal}`);
+// Metodo para agregar un producto al carrito
+const addCarrito = producto => {
+    carrito.push(producto);
 }
 
-function boton1() {
-  confirm("Su compra se ha realizado con éxito")
+// Metodo para hallar un producto por su SKU
+const findCarrito = sku => {
+
+    const producto = carrito.find(producto => producto.sku === sku);
+
+    if (!producto) {
+        throw new Error(`No existe el producto con el SKU ${sku}`)
+    }
+
+    return producto;
+
 }
-function boton2() {
-  confirm("Presione F5")
+
+// Metodo para eliminar un producto segun su SKU
+const deleteCarrito = (sku) => {
+
+    const producto = findCarrito(sku);
+    const indice = carrito.indexOf(producto);
+    carrito.splice(indice, 1);
 }
+
+
+// Metodo para modificar el color de un producto segun su SKU
+const modifyCarrito = (sku, color) => {
+    const producto = findCarrito(sku)
+    producto.color = capitalizar(color);
+}
+
+addCarrito(new Producto(1000, "remera", "de gira", "negra", "xl", 3400));
+addCarrito(new Producto(2000, "buzo", "flaakko", "negro", "xl", 6800));
+addCarrito(new Producto(3000, "gorra", "baires", "blanca", "m", 2900));
+
+console.log(carrito[0]);
+console.log(carrito[1]);
