@@ -74,17 +74,14 @@ const inputBotonCarrito = document.getElementById('input-boton-carrito');
 
 // Mostar "Producto agregado con exito" en el browser
 const renderExitoCarrito = () => {
-  for (let producto of carrito) {
     const exito = document.createElement('P');
     exito.textContent = `Se ha agregado con exito el producto al carrito!`
 
     exitoCarrito.appendChild(exito);
-
-    // Desaparezca despues de 3 segundos
-    setTimeout(() => {
-      exito.remove();
-    }, 3000);
-  }
+  // Desaparezca despues de 3 segundos
+  setTimeout(() => {
+    exito.remove();
+  }, 3000);
 }
 
 renderExitoCarrito()
