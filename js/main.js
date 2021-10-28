@@ -58,6 +58,8 @@ const modifyCarrito = (sku, color) => {
     producto.color = capitalizar(color);
 }
 
+
+const exitoCarrito = document.getElementById('exito-carrito');
 const listaCarrito = document.getElementById('lista-carrito');
 const precioTotalCarrito = document.getElementById('precio-total-carrito');
 const formCarrito = document.getElementById('form-carrito');
@@ -69,6 +71,23 @@ const inputTalleCarrito = document.getElementById('input-talle-carrito');
 const inputPrecioCarrito = document.getElementById('input-precio-carrito');
 const inputBotonCarrito = document.getElementById('input-boton-carrito');
 
+
+// Mostar "Producto agregado con exito" en el browser
+const renderExitoCarrito = () => {
+  for (let producto of carrito) {
+    const exito = document.createElement('P');
+    exito.textContent = `Se ha agregado con exito el producto al carrito!`
+
+    exitoCarrito.appendChild(exito);
+
+    // Desaparezca despues de 3 segundos
+    setTimeout(() => {
+      exito.remove();
+    }, 3000);
+  }
+}
+
+renderExitoCarrito()
 
 // Agregar productos al carrito en el browser
 const renderListaCarrito = () => {
@@ -89,6 +108,7 @@ const renderListaCarrito = () => {
 
 renderListaCarrito()
 
+// Sumar el total de los productos en el browser
 const renderPrecioTotalCarrito = () => {
   let total = 0;
   for (let producto of carrito) {
