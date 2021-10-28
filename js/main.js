@@ -16,7 +16,7 @@ function capitalizar(palabra) {
 }
 
 // Array carrito
-let carrito = []
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 // Metodo que retorna el contenido del carrito
 const getCarrito = () => {
@@ -26,6 +26,7 @@ const getCarrito = () => {
 // Metodo para agregar un producto al carrito
 const addCarrito = producto => {
     carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
 // Metodo para hallar un producto por su SKU
@@ -42,23 +43,62 @@ const findCarrito = sku => {
 }
 
 // Metodo para eliminar un producto segun su SKU
-const deleteCarrito = (sku) => {
+const removeCarrito = (sku) => {
 
     const producto = findCarrito(sku);
     const indice = carrito.indexOf(producto);
     carrito.splice(indice, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
 
 // Metodo para modificar el color de un producto segun su SKU
 const modifyCarrito = (sku, color) => {
-    const producto = findCarrito(sku)
+    const producto = findCarrito(sku);
     producto.color = capitalizar(color);
 }
 
-addCarrito(new Producto(1000, "remera", "de gira", "negra", "xl", 3400));
-addCarrito(new Producto(2000, "buzo", "flaakko", "negro", "xl", 6800));
-addCarrito(new Producto(3000, "gorra", "baires", "blanca", "m", 2900));
+const listaCarrito = document.getElementById('lista-carrito');
+const formCarrito = document.getElementById('form-carrito');
+const inputSkuCarrito = document.getElementById('input-sku-carrito');
+const inputTipoCarrito = document.getElementById('input-tipo-carrito');
+const inputModeloCarrito = document.getElementById('input-modelo-carrito');
+const inputColorCarrito = document.getElementById('input-color-carrito');
+const inputTalleCarrito = document.getElementById('input-talle-carrito');
+const inputPrecioCarrito = document.getElementById('input-precio-carrito');
+const inputBotonCarrito = document.getElementById('input-boton-carrito');
 
-console.log(carrito[0]);
-console.log(carrito[1]);
+
+// Agregar productos al carrito en el browser
+const renderListaCarrito = () => {
+
+  for (let producto of carrito) {
+      let itemCarrito = document.createElement('li');
+      itemCarrito.innerHTML = `
+                              Sku: ${producto.sku}
+                              Tipo: ${producto.tipo}
+                              Modelo: ${producto.modelo}
+                              Color: ${producto.color}
+                              Talle: ${producto.talle}
+                              Precio: $${producto.precio}
+                              `
+      listaCarrito.appendChild(itemCarrito)
+  }
+}
+
+renderListaCarrito()
+
+// Escuchar el evento submit del formulario
+formCarrito.addEventListener('submit', (event) => {
+    const sku = inputSkuCarrito.value
+    const tipo = inputTipoCarrito.value
+    const modelo = inputModeloCarrito.value
+    const color = inputColorCarrito.value
+    const talle = inputTalleCarrito.value
+    const precio = inputPrecioCarrito.value
+
+    const producto = new Producto(sku, tipo, modelo, color, talle, precio);
+
+    addCarrito(producto);
+
+})

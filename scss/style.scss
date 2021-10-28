@@ -702,6 +702,48 @@ img {
   }
 }
 
+.carrito {
+  margin-bottom: 3rem;
+  &__formulario {
+    background-color: $blanco;
+    padding: 5rem;
+    margin-bottom: 3;
+    @at-root .carrito__fieldset {
+      width: 90%;
+      margin: 0 auto 0 auto;
+      color: $negro;
+      border: none;
+      @at-root .carrito__leyenda {
+        font-size: 1.6rem;
+        font-weight: 800;
+      }
+      @at-root .carrito__input {
+        min-width: 20vw;
+      }
+      // @at-root .carrito__boton {
+      //   font-family: $fuenteMonument;
+      //   color: $blanco;
+      //   background-color: $negro;
+      //   height: 4rem;
+      //   border: none;
+      //
+      //   &:hover {
+      //     cursor: pointer;
+      //   }
+
+      }
+      @media (max-width: $breakpoint) {
+        @at-root .carrito__select,
+        .carrito__input,
+        .carrito__boton,
+        .carrito__textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 .error {
   min-height: 100vh;
   position: relative;

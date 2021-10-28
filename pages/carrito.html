@@ -60,10 +60,48 @@
 
     <main class="main">
       <div class="contenedor">
-        <h1>Carrito</h1>
+        <section class="carrito">
+          <form action="" class="carrito__formulario" id="form-carrito">
+            <fieldset class="carrito__fieldset">
+              <h1 class="carrito__titulo">Carrito</h1>
+              <legend class="carrito__leyenda">Agregá un producto</legend>
+
+              <label class="carrito__sku block" for="sku">Ingrese un SKU*</label>
+              <input class="carrito__input block" type="number" name="sku" id="input-sku-carrito" value="" placeholder="####" min="0" required>
+              <br>
+
+              <label class="carrito__tipo block" for="tipo">Ingrese tipo*</label>
+              <input class="carrito__input block" type="text" name="tipo" id="input-tipo-carrito" value="" placeholder="Remera, buzo o gorra" required>
+              <br>
+
+              <label class="carrito__modelo block" for="modelo">Ingrese modelo*</label>
+              <input class="carrito__input block" type="text" name="modelo" id="input-modelo-carrito" value="" placeholder="Baires, De gira, Flaakko u Ojos" required>
+              <br>
+
+              <label class="carrito__color block" for="color">Ingrese color*</label>
+              <input class="carrito__input block" type="text" name="color" id="input-color-carrito" value="" placeholder="Blanco o negro" required>
+              <br>
+
+              <label class="carrito__talle block" for="talle">Ingrese talle*</label>
+              <input class="carrito__input block" type="text" name="talle" id="input-talle-carrito" value="" placeholder="XS, S, M, L o XL" required>
+              <br>
+
+              <label class="carrito__precio block" for="precio">Ingrese precio</label>
+              <input class="carrito__input block" type="number" name="precio" id="input-precio-carrito" value="" min="0" required>
+              <br>
+
+              <input class="carrito__boton block" type="submit" name="boton" id="input-boton-carrito" value="Agregar">
+            </fieldset>
+          </form>
+          <ul id="lista-carrito">
+
+          </ul>
+        </section>
+
+        <!-- <h1>Carrito</h1>
         <p>Está todo correcto?</p>
-        <button class="contacto__boton" onclick="boton1()">Sí</button>
-        <button class="contacto__boton" onclick="boton2()">No</button>
+        <button class="carrito__boton" onclick="boton1()">Sí</button>
+        <button class="carrito__boton" onclick="boton2()">No</button> -->
       </div> <!-- .contenedor -->
     </main>
 
