@@ -59,6 +59,7 @@ const modifyCarrito = (sku, color) => {
 }
 
 const listaCarrito = document.getElementById('lista-carrito');
+const precioTotalCarrito = document.getElementById('precio-total-carrito');
 const formCarrito = document.getElementById('form-carrito');
 const inputSkuCarrito = document.getElementById('input-sku-carrito');
 const inputTipoCarrito = document.getElementById('input-tipo-carrito');
@@ -87,6 +88,17 @@ const renderListaCarrito = () => {
 }
 
 renderListaCarrito()
+
+const renderPrecioTotalCarrito = () => {
+  let total = 0;
+  for (let producto of carrito) {
+      total += producto.precio
+      precioTotalCarrito.innerText = `Total: $${total}`
+
+  }
+}
+
+renderPrecioTotalCarrito()
 
 // Escuchar el evento submit del formulario
 formCarrito.addEventListener('submit', (event) => {
