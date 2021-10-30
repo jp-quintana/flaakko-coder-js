@@ -61,48 +61,18 @@
     <main class="main">
       <div class="contenedor">
         <section class="carrito">
-          <form action="" class="carrito__formulario" id="form-carrito">
-            <fieldset class="carrito__fieldset">
-              <h1 class="carrito__titulo">Carrito</h1>
-              <legend class="carrito__leyenda">Agregá un producto</legend>
-
-              <label class="carrito__sku block" for="sku">Ingrese un SKU*</label>
-              <input class="carrito__input block" type="number" name="sku" id="input-sku-carrito" value="" placeholder="####" min="0" required>
-              <br>
-
-              <label class="carrito__tipo block" for="tipo">Ingrese tipo*</label>
-              <input class="carrito__input block" type="text" name="tipo" id="input-tipo-carrito" value="" placeholder="Remera, buzo o gorra" required>
-              <br>
-
-              <label class="carrito__modelo block" for="modelo">Ingrese modelo*</label>
-              <input class="carrito__input block" type="text" name="modelo" id="input-modelo-carrito" value="" placeholder="Baires, De gira, Flaakko u Ojos" required>
-              <br>
-
-              <label class="carrito__color block" for="color">Ingrese color*</label>
-              <input class="carrito__input block" type="text" name="color" id="input-color-carrito" value="" placeholder="Blanco o negro" required>
-              <br>
-
-              <label class="carrito__talle block" for="talle">Ingrese talle*</label>
-              <input class="carrito__input block" type="text" name="talle" id="input-talle-carrito" value="" placeholder="XS, S, M, L o XL" required>
-              <br>
-
-              <label class="carrito__precio block" for="precio">Ingrese precio</label>
-              <input class="carrito__input block" type="number" name="precio" id="input-precio-carrito" value="" min="0" required>
-              <br>
-
-              <input class="carrito__boton block" type="submit" name="boton" id="input-boton-carrito" value="Agregar">
-              <br>
-              <div id="exito-carrito">
-
-              </div>
-            </fieldset>
-          </form>
-          <h2>Contenido:</h2>
-          <ul id="lista-carrito">
-
-          </ul>
+          <h1>Carrito</h1>
+          <table class="carrito__tabla">
+            <tbody id="body-carrito" class="carrito__body">
+              <tr class="carrito__fila">
+                <th class="carrito__producto">Producto</th>
+                <th class="carrito__cantidad">Cantidad</th>
+                <th class="carrito__subtotal">Subtotal</th>
+              </tr>
+            </tbody>
+          </table>
           <br>
-          <h3 id="precio-total-carrito">Total: $0<h3>
+          <p id="precio-total-carrito" class="carrito__total">Total: $0<p>
         </section>
       </div> <!-- .contenedor -->
     </main>

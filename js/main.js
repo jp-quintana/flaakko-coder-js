@@ -58,18 +58,13 @@ const modifyCarrito = (sku, color) => {
     producto.color = capitalizar(color);
 }
 
-
-const exitoCarrito = document.getElementById('exito-carrito');
-const listaCarrito = document.getElementById('lista-carrito');
+const bodyCarrito = document.getElementById('body-carrito');
 const precioTotalCarrito = document.getElementById('precio-total-carrito');
+
 const formCarrito = document.getElementById('form-carrito');
-const inputSkuCarrito = document.getElementById('input-sku-carrito');
-const inputTipoCarrito = document.getElementById('input-tipo-carrito');
-const inputModeloCarrito = document.getElementById('input-modelo-carrito');
-const inputColorCarrito = document.getElementById('input-color-carrito');
-const inputTalleCarrito = document.getElementById('input-talle-carrito');
-const inputPrecioCarrito = document.getElementById('input-precio-carrito');
-const inputBotonCarrito = document.getElementById('input-boton-carrito');
+const talleCarrito = document.getElementById('talle-carrito');
+const agregarCarrito = document.getElementById('agregar-carrito');
+const exitoCarrito = document.getElementById('exito-carrito');
 
 
 // Mostar "Producto agregado con exito" en el browser
@@ -84,22 +79,18 @@ const renderExitoCarrito = () => {
   }, 3000);
 }
 
-renderExitoCarrito()
-
 // Agregar productos al carrito en el browser
 const renderListaCarrito = () => {
 
   for (let producto of carrito) {
-      let itemCarrito = document.createElement('li');
+      let itemCarrito = document.createElement('TR');
       itemCarrito.innerHTML = `
-                              Sku: ${producto.sku}
-                              Tipo: ${producto.tipo}
-                              Modelo: ${producto.modelo}
-                              Color: ${producto.color}
-                              Talle: ${producto.talle}
-                              Precio: $${producto.precio}
+                              <td>${producto.tipo} "${producto.modelo}" Talle: ${producto.talle}</td>
+                              <td>1u</td>
+                              <td>$${producto.precio}</td>
                               `
-      listaCarrito.appendChild(itemCarrito)
+      itemCarrito.classList.add('carrito__fila')
+      bodyCarrito.appendChild(itemCarrito)
   }
 }
 
@@ -116,18 +107,3 @@ const renderPrecioTotalCarrito = () => {
 }
 
 renderPrecioTotalCarrito()
-
-// Escuchar el evento submit del formulario
-formCarrito.addEventListener('submit', (event) => {
-    const sku = inputSkuCarrito.value
-    const tipo = inputTipoCarrito.value
-    const modelo = inputModeloCarrito.value
-    const color = inputColorCarrito.value
-    const talle = inputTalleCarrito.value
-    const precio = inputPrecioCarrito.value
-
-    const producto = new Producto(sku, tipo, modelo, color, talle, precio);
-
-    addCarrito(producto);
-
-})

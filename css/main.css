@@ -524,35 +524,22 @@ img {
     width: 100%; }
 
 .carrito {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 3rem; }
-  .carrito__formulario {
-    background-color: #ffffff;
-    padding: 5rem;
-    margin-bottom: 3; }
-    .carrito__fieldset {
-      width: 90%;
-      margin: 0 auto 0 auto;
-      color: #000000;
-      border: none; }
-      .carrito__leyenda {
-        font-size: 1.6rem;
-        font-weight: 800; }
-      .carrito__input {
-        min-width: 20vw; }
-      .carrito__boton {
-        font-family: "Monument Extended", sans-serif;
-        color: #ffffff;
-        background-color: #000000;
-        height: 4rem;
-        border: none; }
-        .carrito__boton:hover {
-          cursor: pointer; }
-      @media (max-width: 768px) {
-        .carrito__select,
-        .carrito__input,
-        .carrito__boton,
-        .carrito__textarea {
-          width: 100%; } }
+  .carrito__tabla {
+    width: 100%;
+    border-collapse: collapse; }
+    .carrito__fila {
+      display: grid;
+      grid-template-columns: 50% 25% 25%; }
+      .carrito__fila th {
+        font-size: 1.6rem; }
+      .carrito__fila th:last-child,
+      .carrito__fila td:last-child {
+        text-align: right; }
+  .carrito__total {
+    align-self: flex-end; }
 
 .error {
   min-height: 100vh;
