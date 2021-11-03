@@ -7,9 +7,15 @@ const renderListaCarrito = () => {
   for (let producto of carrito) {
       let itemCarrito = document.createElement('TR');
       itemCarrito.innerHTML = `
-                              <td>${producto.tipo} "${producto.modelo}" Talle: ${producto.talle}</td>
-                              <td>1u</td>
-                              <td>$${producto.precio}</td>
+                              <td class="carrito__producto">
+                                <img src="../img/productos-hoodie-blanco-1.jpg" alt="" class="carrito__imagen">
+                                <div class="carrito__info">
+                                  <p class="carrito__nombre">${producto.tipo} ${producto.modelo} ${producto.talle}</p>
+                                  <p data-id=${producto.sku} class="carrito__eliminar">remover</p>
+                                </div>
+                              </td>
+                              <td class="carrito__cantidad">1u</td>
+                              <td class="carrito__subtotal">$ ${producto.precio}</td>
                               `
       itemCarrito.classList.add('carrito__fila')
       bodyCarrito.appendChild(itemCarrito)
@@ -27,4 +33,15 @@ const renderPrecioTotalCarrito = () => {
 
   }
 }
+
 renderPrecioTotalCarrito()
+
+// Escuchar el evento click en remover
+bodyCarrito.addEventListener('click', (event) => {
+  if (event.target.classList.contains('carrito__eliminar')) {
+    let eliminarProducto = event.target;
+    let id = parseInt(eliminarProducto.dataset.id);
+    removeCarrito(id);
+    document.location.reload();
+  }
+})

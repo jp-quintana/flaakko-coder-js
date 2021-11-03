@@ -711,15 +711,49 @@ img {
     width: 100%;
     border-collapse: collapse;
 
-    @at-root .carrito__fila {
+    @at-root .carrito__header,
+    .carrito__fila {
       display: grid;
       grid-template-columns: 50% 25% 25%;
+
       th {
         font-size: 1.6rem;
       }
-      th:last-child,
-      td:last-child {
+      th:last-child {
         text-align: right;
+      }
+
+    }
+    @at-root .carrito__fila {
+      border-bottom: 0.1rem solid rgba($grisClaro, 0.3);
+      padding: 1rem 0rem;
+
+      @at-root .carrito__producto,
+      .carrito__cantidad,
+      .carrito__subtotal {
+        display: flex;
+        align-items: center;
+      }
+      @at-root .carrito__producto {
+        grid-gap: 2rem;
+        @at-root .carrito__imagen {
+          height: 20rem;
+        }
+        @at-root .carrito__nombre {
+          font-size: 1.6rem;
+        }
+        @at-root .carrito__eliminar {
+          font-size: 1rem;
+          color: gray;
+
+          &:hover {
+            cursor: pointer;
+
+          }
+        }
+      }
+      @at-root .carrito__subtotal {
+        flex-direction: row-reverse;
       }
     }
   }
