@@ -3,7 +3,7 @@ const precioTotalCarrito = document.getElementById('precio-total-carrito');
 
 // Agregar productos al carrito en el browser
 const renderListaCarrito = () => {
-
+  bodyCarrito.innerHTML = "";
   for (let producto of carrito) {
       let itemCarrito = document.createElement('TR');
       itemCarrito.innerHTML = `
@@ -29,9 +29,8 @@ const renderPrecioTotalCarrito = () => {
   let total = 0;
   for (let producto of carrito) {
       total += producto.precio
-      precioTotalCarrito.innerText = `Total: $${total}`
-
   }
+  precioTotalCarrito.innerText = `Total: $${total}` 
 }
 
 renderPrecioTotalCarrito()
@@ -42,6 +41,8 @@ bodyCarrito.addEventListener('click', (event) => {
     let eliminarProducto = event.target;
     let id = parseInt(eliminarProducto.dataset.id);
     removeCarrito(id);
-    document.location.reload();
+    // document.location.reload();
+    renderListaCarrito()
+    renderPrecioTotalCarrito()
   }
 })

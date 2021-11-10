@@ -2,7 +2,7 @@ const formProducto = document.getElementById('form-producto');
 const talleProducto = document.getElementById('talle-producto');
 const exitoProducto = document.getElementById('exito-producto');
 
-let sku = 1000
+  let sku = 1000
 
 // Mostar "Producto agregado con exito" en el browser
 const renderExitoCarrito = () => {
